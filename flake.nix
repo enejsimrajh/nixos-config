@@ -34,12 +34,16 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+
+    # Devshell
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   outputs = inputs@{ self, ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" "aarch64-darwin" ];
       imports = [
+        inputs.treefmt-nix.flakeModule
         inputs.nixos-flake.flakeModule
         ./users
         ./home
@@ -69,6 +73,27 @@
             ];
           };
         };
+      };
+
+      perSystem = { self', system, pkgs, lib, config, inputs', ... }: {
+        nixos-flake.primary-inputs = [ "nixpkgs" "home-manager" "nix-darwin" "nixos-flake" ];
+
+        treefmt.config = {
+          projectRootFile = "flake.nix";
+          programs.nixpkgs-fmt.enable = true;
+        };
+
+        packages.default = self'.packages.activate;
+
+        devShells.default = pkgs.mkShell {
+          buildInputs = [
+            pkgs.nixpkgs-fmt
+            pkgs.sops
+            pkgs.ssh-to-age
+          ];
+        };
+        
+        formatter = config.treefmt.build.wrapper;
       };
     };
 }
