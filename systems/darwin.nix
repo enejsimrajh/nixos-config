@@ -29,6 +29,7 @@
       "discord"
       "slack"
       "spotify"
+      "zed"
     ];
   };
 
