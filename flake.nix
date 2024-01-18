@@ -24,6 +24,7 @@
     # Software
     nuenv.url = "github:DeterminateSystems/nuenv";
     nixd.url = "github:nix-community/nixd";
+    nixci.url = "github:srid/nixci";
 
     # Homebrew taps
     homebrew-core = {
