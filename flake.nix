@@ -4,6 +4,10 @@
   inputs = {
     # Principle inputs (updated by `nix run .#update`)
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,6 +19,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-flake.url = "github:srid/nixos-flake";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nixos-wsl-vscode.url = "github:Atry/nixos-wsl-vscode";
 
     # Software
     nuenv.url = "github:DeterminateSystems/nuenv";
@@ -49,7 +54,7 @@
             nixpkgs.hostPlatform = "x86_64-linux";
             imports = [
               self.nixosModules.default # Defined in nixos/default.nix
-              ./systems/nixos.nix
+              ./systems/wsl.nix
             ];
           };
         };
