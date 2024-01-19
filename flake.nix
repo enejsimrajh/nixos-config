@@ -19,12 +19,10 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-flake.url = "github:srid/nixos-flake";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    nixos-wsl-vscode.url = "github:Atry/nixos-wsl-vscode";
 
     # Software
     nuenv.url = "github:DeterminateSystems/nuenv";
     nixd.url = "github:nix-community/nixd";
-    nixci.url = "github:srid/nixci";
 
     # Homebrew taps
     homebrew-core = {
