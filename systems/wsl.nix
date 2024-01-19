@@ -11,5 +11,7 @@
     defaultUser = flake.config.people.myself;
   };
 
+  networking.hostName = "nixos-wsl";
+
   system.stateVersion = "23.11";
 }

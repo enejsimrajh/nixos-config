@@ -53,7 +53,7 @@
       flake = {
         # Configurations for Linux (NixOS) machines
         nixosConfigurations = {
-          wsl = self.nixos-flake.lib.mkLinuxSystem {
+          "nixos-wsl" = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
             imports = [
               self.nixosModules.default # Defined in nixos/default.nix
