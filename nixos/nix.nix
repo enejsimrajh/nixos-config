@@ -17,7 +17,7 @@
     # Perform garbage collection weekly to maintain low disk usage
     gc = {
       automatic = true;
-      dates = "weekly";
+      interval = { Weekday = 0; Hour = 0; Minute = 0; };
       options = "--delete-older-than 30d";
     };
     settings = {
