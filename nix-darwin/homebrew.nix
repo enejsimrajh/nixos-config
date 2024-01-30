@@ -7,7 +7,6 @@
   # Enable Homebrew
   nix-homebrew = {
     enable = true;
-    enableRosetta = true;
     user = flake.config.people.myself;
     # Declarative tap management
     taps = {
