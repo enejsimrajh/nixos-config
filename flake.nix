@@ -64,7 +64,7 @@
 
         # Configurations for macOS machines
         darwinConfigurations = {
-          macbook = self.nixos-flake.lib.mkMacosSystem {
+          "enejs-macbook" = self.nixos-flake.lib.mkMacosSystem {
             nixpkgs.hostPlatform = "aarch64-darwin";
             imports = [
               self.darwinModules.default # Defined in nix-darwin/default.nix
