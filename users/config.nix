@@ -1,7 +1,7 @@
 {
-  myself = "enej";
+  myself = "enejsimrajh";
   users = {
-    enej = {
+    enejsimrajh = {
       name = "Enej Simrajh";
       email = "enej.simrajh@gmail.com";
       sshKeys = [];
