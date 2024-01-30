@@ -8,12 +8,13 @@
   nix-homebrew = {
     enable = true;
     user = flake.config.people.myself;
-    # Declarative tap management
+    # Enable fully-declarative tap management
+    mutableTaps = false;
     taps = {
       "homebrew/homebrew-core" = flake.inputs.homebrew-core;
       "homebrew/homebrew-cask" = flake.inputs.homebrew-cask;
+      "homebrew/homebrew-bundle" = flake.inputs.homebrew-bundle;
     };
-    mutableTaps = false; # Enable fully-declarative tap management
   };
 
   # macOS GUI programs
