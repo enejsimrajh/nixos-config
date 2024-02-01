@@ -1,5 +1,5 @@
 {
-  programs.helix = {
+  programs.ripgrep = {
     enable = true;
   };
 }

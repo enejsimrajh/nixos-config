@@ -6,14 +6,13 @@
         home.stateVersion = "23.11";
         imports = [
           ./bash.nix
-          #./carapace.nix
           ./direnv.nix
+          ./gh.nix
           ./git.nix
-          ./helix.nix
-          ./just.nix
-          #./nushell.nix
+          ./ripgrep.nix
           ./starship.nix
           ./terminal.nix
+          ./zoxide.nix
         ];
       };
       common-linux = {

@@ -1,5 +1,5 @@
 {
-  programs.carapace = {
+  programs.gh = {
     enable = true;
   };
 }
