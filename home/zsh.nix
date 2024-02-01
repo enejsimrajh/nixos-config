@@ -1,7 +1,7 @@
 {
   programs.zsh = {
     enable = true;
-    envExtra = ''
+    initExtra = ''
         export PATH=/etc/profiles/per-user/$USER/bin:/run/current-system/sw/bin/:$PATH
     '';
   };
