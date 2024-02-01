@@ -13,7 +13,7 @@ To use this configuration for a machine running:
   ```
 - Start a nix shell to make git available
   ```zsh
-  nix shell git
+  nix shell nixpkgs#git
   ```
 - Clone this repository
   ```zsh
