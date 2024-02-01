@@ -14,7 +14,7 @@
 
   programs = {
     zoxide.enable = true;
-    nix-index.enable = true;
+    #nix-index.enable = true;
     htop.enable = true;
   };
 }
