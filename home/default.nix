@@ -6,12 +6,12 @@
         home.stateVersion = "23.11";
         imports = [
           ./bash.nix
-          ./carapace.nix
+          #./carapace.nix
           ./direnv.nix
           ./git.nix
           ./helix.nix
           ./just.nix
-          ./nushell.nix
+          #./nushell.nix
           ./starship.nix
           ./terminal.nix
         ];
@@ -24,6 +24,7 @@
       common-darwin = {
         imports = [
           self.homeModules.common
+          ./zsh.nix
         ];
       };
     };
