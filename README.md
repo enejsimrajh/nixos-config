@@ -11,9 +11,9 @@ To use this configuration for a machine running:
   ```zsh
   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
   ```
-- Start a nix-shell to make git available
+- Start a nix shell to make git available
   ```zsh
-  nix-shell -p git
+  nix shell git
   ```
 - Clone this repository
   ```zsh
