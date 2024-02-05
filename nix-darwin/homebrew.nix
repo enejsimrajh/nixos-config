@@ -27,6 +27,7 @@
       "raycast"
       "slack"
       "spotify"
+      "warp"
       "zed"
     ];
   };
