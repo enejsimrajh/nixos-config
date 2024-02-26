@@ -27,6 +27,8 @@
       "raycast"
       "slack"
       "spotify"
+      "sublime-merge"
+      "swish"
       "warp"
       "zed"
     ];
