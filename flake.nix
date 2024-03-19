@@ -64,6 +64,12 @@
               ./systems/wsl.nix
             ];
           };
+          "nixos-test" = self.nixos-flake.lib.mkLinuxSystem {
+            nixpkgs.hostPlatform = "aarch64-linux";
+            imports = [
+              self.nixosModules.default # Defined in nixos/default.nix
+            ];
+          };
         };
 
         # Configurations for macOS machines
@@ -95,7 +101,7 @@
             pkgs.ssh-to-age
           ];
         };
-        
+
         formatter = config.treefmt.build.wrapper;
       };
     };
