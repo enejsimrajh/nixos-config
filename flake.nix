@@ -42,7 +42,7 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = inputs@{ self, ... }:
+  outputs = inputs@{ self, nixpkgs, ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" "aarch64-darwin" ];
       imports = [
@@ -64,10 +64,14 @@
               ./systems/wsl.nix
             ];
           };
-          "nixos-test" = self.nixos-flake.lib.mkLinuxSystem {
+          "darwin-vm" = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "aarch64-linux";
+            system = "aarch64-linux";
             imports = [
-              self.nixosModules.default # Defined in nixos/default.nix
+              ./systems/vm.nix
+              {
+                virtualisation.vmVariant.virtualisation.host.pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+              }
             ];
           };
         };
@@ -82,6 +86,8 @@
             ];
           };
         };
+
+        packages.aarch64-darwin.darwin-vm = self.nixosConfigurations.darwin-vm.config.system.build.vm;
       };
 
       perSystem = { self', system, pkgs, lib, config, inputs', ... }: {
