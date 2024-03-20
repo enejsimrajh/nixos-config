@@ -10,7 +10,7 @@
       extraGroups = ["wheel"];
     };
 
-    services.getty.autologinUser = "test";
+    services.getty.autologinUser = flake.config.people.myself;
     security.sudo.wheelNeedsPassword = false;
 
     # Make VM output to the terminal instead of a separate window

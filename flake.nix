@@ -44,7 +44,7 @@
 
   outputs = inputs@{ self, nixpkgs, ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" "aarch64-darwin" ];
+      systems = [ "x86_64-linux" "aarch64-darwin" "aarch64-linux" ];
       imports = [
         inputs.treefmt-nix.flakeModule
         inputs.nixos-flake.flakeModule
@@ -64,9 +64,9 @@
               ./systems/wsl.nix
             ];
           };
+
           "darwin-vm" = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "aarch64-linux";
-            system = "aarch64-linux";
             imports = [
               ./systems/vm.nix
               {
