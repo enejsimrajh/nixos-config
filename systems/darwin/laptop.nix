@@ -1,7 +1,15 @@
-# See nix-darwin/default.nix for other modules in use.
-
 { flake, ... }:
+
+let
+  inherit (flake) inputs;
+  inherit (inputs) self;
+in
 {
+  imports = [
+    self.darwinModules.default
+    "${self}/nix-darwin/linux-builder.nix"
+  ];
+
   # For home-manager to work.
   users.users.${flake.config.people.myself} = {
     name = flake.config.people.myself;

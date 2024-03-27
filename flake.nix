@@ -57,37 +57,54 @@
       flake = {
         # Configurations for Linux (NixOS) machines
         nixosConfigurations = {
-          "nixos-wsl" = self.nixos-flake.lib.mkLinuxSystem {
+          # Personal desktop
+          "brahma" = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
             imports = [
-              self.nixosModules.default # Defined in nixos/default.nix
-              ./systems/wsl.nix
+              ./systems/desktop.nix
             ];
           };
 
-          "darwin-vm" = self.nixos-flake.lib.mkLinuxSystem {
+          # Home server
+          "vishnu" = self.nixos-flake.lib.mkLinuxSystem {
+            nixpkgs.hostPlatform = "x86_64-linux";
+            imports = [
+              ./systems/nixos/server.nix
+            ];
+          };
+
+          # NixOS VM for macOS machines
+          "maya" = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "aarch64-linux";
             imports = [
-              ./systems/vm.nix
+              ./systems/nixos/qemu.nix
               {
                 virtualisation.vmVariant.virtualisation.host.pkgs = nixpkgs.legacyPackages.aarch64-darwin;
               }
+            ];
+          };
+
+          # NixOS VM for Windows machines
+          "yama" = self.nixos-flake.lib.mkLinuxSystem {
+            nixpkgs.hostPlatform = "x86_64-linux";
+            imports = [
+              ./systems/nixos/wsl.nix
             ];
           };
         };
 
         # Configurations for macOS machines
         darwinConfigurations = {
-          "enejs-macbook" = self.nixos-flake.lib.mkMacosSystem {
+          # Personal laptop
+          "shiva" = self.nixos-flake.lib.mkMacosSystem {
             nixpkgs.hostPlatform = "aarch64-darwin";
             imports = [
-              self.darwinModules.default # Defined in nix-darwin/default.nix
-              ./systems/darwin.nix
+              ./systems/darwin/laptop.nix
             ];
           };
         };
 
-        packages.aarch64-darwin.darwin-vm = self.nixosConfigurations.darwin-vm.config.system.build.vm;
+        packages.aarch64-darwin.darwin-vm = self.nixosConfigurations.maya.config.system.build.vm;
       };
 
       perSystem = { self', system, pkgs, lib, config, inputs', ... }: {

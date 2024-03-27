@@ -17,7 +17,6 @@
         self.darwinModules.my-home
         self.nixosModules.common
         ./homebrew.nix
-        ./linux-builder.nix
       ];
     };
   };

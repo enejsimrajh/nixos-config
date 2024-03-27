@@ -1,5 +1,16 @@
+# Configuration for virtual machines running under QEMU
+
 { flake, ... }:
+
+let
+  inherit (flake) inputs;
+  inherit (inputs) self;
+in
 {
+    imports = [
+        self.nixosModules.default
+    ];
+
     # Configure networking
     networking.useDHCP = false;
     networking.interfaces.eth0.useDHCP = true;
