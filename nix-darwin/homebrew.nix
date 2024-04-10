@@ -32,5 +32,11 @@
       "warp"
       "zed"
     ];
+    # Search for app IDs using the mas CLI app
+    # $ nix shell nixpkgs#mas
+    # $ mas search <app name>
+    # masApps = {
+    #   "bitwarden" = 1352778147;
+    # };
   };
 }

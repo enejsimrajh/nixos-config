@@ -16,7 +16,10 @@
         self.darwinModules_.home-manager
         self.darwinModules.my-home
         self.nixosModules.common
+        ./dock.nix
+        ./finder.nix
         ./homebrew.nix
+        ./screencapture.nix
       ];
     };
   };
