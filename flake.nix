@@ -20,11 +20,9 @@
     nixos-flake.url = "github:srid/nixos-flake";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
-    # Software
     nuenv.url = "github:DeterminateSystems/nuenv";
     nixd.url = "github:nix-community/nixd";
 
-    # Homebrew taps
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -36,6 +34,14 @@
     homebrew-bundle = {
       url = "github:homebrew/homebrew-bundle";
       flake = false;
+    };
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixpkgs-firefox-darwin = {
+      url = "github:bandithedoge/nixpkgs-firefox-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Devshell

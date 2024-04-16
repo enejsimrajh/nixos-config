@@ -9,6 +9,7 @@
     overlays = [
       flake.inputs.nuenv.overlays.nuenv
       flake.inputs.nixd.overlays.default
+      flake.inputs.nixpkgs-firefox-darwin.overlay
     ];
   };
 

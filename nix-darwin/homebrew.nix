@@ -23,7 +23,7 @@
     casks = [
       "bitwarden"
       "discord"
-      "firefox"
+      #"firefox" installed with home manager
       "raycast"
       "slack"
       "spotify"

@@ -1,4 +1,4 @@
-  # Configuration common to all macOS systems
+# Configuration common to all macOS systems
 
 { self, config, ... }:
 {

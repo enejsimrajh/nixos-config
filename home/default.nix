@@ -7,6 +7,7 @@
         imports = [
           ./bash.nix
           ./direnv.nix
+          ./firefox.nix
           ./gh.nix
           ./git.nix
           ./ripgrep.nix
