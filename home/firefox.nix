@@ -2,7 +2,7 @@
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-bin;
+    package = if pkgs.stdenv.isDarwin then null else pkgs.firefox-bin;
     profiles.${flake.config.people.users.${config.home.username}.name} = {
       bookmarks = {};
       extensions = with flake.inputs.firefox-addons.packages.${pkgs.system}; [

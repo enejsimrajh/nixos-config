@@ -39,10 +39,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-firefox-darwin = {
-      url = "github:bandithedoge/nixpkgs-firefox-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # Devshell
     treefmt-nix.url = "github:numtide/treefmt-nix";
