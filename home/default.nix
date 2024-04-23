@@ -8,7 +8,6 @@
           ./bash.nix
           ./direnv.nix
           ./firefox.nix
-          ./gh.nix
           ./git.nix
           ./ripgrep.nix
           ./starship.nix
@@ -19,6 +18,7 @@
       common-linux = {
         imports = [
           self.homeModules.common
+          ./hyprland.nix
         ];
       };
       common-darwin = {
