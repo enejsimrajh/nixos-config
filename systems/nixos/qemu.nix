@@ -9,6 +9,7 @@ in
 {
     imports = [
         self.nixosModules.default
+        "${self}/nixos/sourcehut.nix"
     ];
 
     # Configure networking
