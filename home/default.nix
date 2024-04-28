@@ -5,6 +5,7 @@
       common = {
         home.stateVersion = "23.11";
         imports = [
+          ./alacritty.nix
           ./bash.nix
           ./direnv.nix
           ./firefox.nix

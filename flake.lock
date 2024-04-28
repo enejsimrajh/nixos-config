@@ -358,26 +358,6 @@
         "type": "indirect"
       }
     },
-    "nixpkgs-firefox-darwin": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1713150561,
-        "narHash": "sha256-q8Oq5oIQK4nAoMoy/Kra7A08mbG2oe7lvitM/PwyUL0=",
-        "owner": "bandithedoge",
-        "repo": "nixpkgs-firefox-darwin",
-        "rev": "4741398f7462509f201051923134127c39ad1b72",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bandithedoge",
-        "repo": "nixpkgs-firefox-darwin",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "dir": "lib",
@@ -525,7 +505,6 @@
         "nixos-flake": "nixos-flake",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_4",
-        "nixpkgs-firefox-darwin": "nixpkgs-firefox-darwin",
         "nuenv": "nuenv",
         "treefmt-nix": "treefmt-nix"
       }

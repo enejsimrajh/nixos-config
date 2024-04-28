@@ -24,12 +24,9 @@
       "bitwarden"
       "discord"
       "firefox"
-      "raycast"
-      "slack"
       "spotify"
       "sublime-merge"
       "swish"
-      "warp"
       "zed"
     ];
     # Search for app IDs using the mas CLI app
