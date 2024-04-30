@@ -21,7 +21,6 @@
   homebrew = {
     enable = true;
     casks = [
-      "bitwarden"
       "discord"
       "firefox"
       "spotify"
@@ -32,8 +31,8 @@
     # Search for app IDs using the mas CLI app
     # $ nix shell nixpkgs#mas
     # $ mas search <app name>
-    # masApps = {
-    #   "bitwarden" = 1352778147;
-    # };
+    masApps = {
+      "bitwarden" = 1352778147;
+    };
   };
 }

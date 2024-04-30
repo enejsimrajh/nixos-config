@@ -3,7 +3,13 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      shell.program = "${pkgs.zsh}/bin/zsh";
+      font = {
+        normal = {
+          family = "IosevkaTerm Nerd Font";
+          style = "Regular";
+        };
+        size = 14;
+      };
     };
   };
 }

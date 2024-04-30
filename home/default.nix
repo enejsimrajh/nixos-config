@@ -6,9 +6,9 @@
         home.stateVersion = "23.11";
         imports = [
           ./alacritty.nix
-          ./bash.nix
           ./direnv.nix
           ./firefox.nix
+          ./fonts.nix
           ./git.nix
           ./ripgrep.nix
           ./starship.nix
@@ -19,6 +19,7 @@
       common-linux = {
         imports = [
           self.homeModules.common
+          ./bash.nix
           ./hyprland.nix
         ];
       };
