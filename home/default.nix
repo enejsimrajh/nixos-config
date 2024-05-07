@@ -13,6 +13,7 @@
           ./ripgrep.nix
           ./starship.nix
           ./terminal.nix
+          ./zellij.nix
           ./zoxide.nix
         ];
       };

@@ -17,11 +17,12 @@
     nixPath = [ "nixpkgs=${flake.inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
     registry.nixpkgs.flake = flake.inputs.nixpkgs; # Make `nix shell` etc use pinned nixpkgs
     # Perform garbage collection weekly to maintain low disk usage
-    gc = {
-      automatic = true;
-      interval = { Weekday = 0; Hour = 0; Minute = 0; };
-      options = "--delete-older-than 30d";
-    };
+    # gc = {
+    #   automatic = true;
+    #   interval = lib.mkIf pkgs.stdenv.isDarwin { Weekday = 0; Hour = 0; Minute = 0; };
+    #   dates = lib.mkIf pkgs.stdenv.isLinux "weekly";
+    #   options = "--delete-older-than 30d";
+    # };
     settings = {
       auto-optimise-store = true;
       experimental-features = "nix-command flakes repl-flake";

@@ -8,15 +8,32 @@ let
 in
 {
   imports = [
-    self.nixosModules.default
-    "${self}/nixos/acme.nix"
+    #self.nixosModules.default
+    #"${self}/nixos/acme.nix"
     "${self}/nixos/nginx.nix"
-    "${self}/nixos/sourcehut.nix"
+    "${self}/nixos/cgit.nix"
   ];
 
   # Configure networking
-  networking.useDHCP = false;
-  networking.interfaces.eth0.useDHCP = true;
+  networking = {
+    hostName = "maya";
+    firewall.enable = false;
+    useDHCP = false;
+    interfaces.eth0.useDHCP = true;
+  };
+
+  virtualisation = {
+    vmVariant.virtualisation = {
+      graphics = false;
+      forwardPorts = [
+        {
+          from = "host";
+          host.port = 8080;
+          guest.port = 80;
+        }
+      ];
+    };
+  };
 
   users.users.${flake.config.people.myself} = {
     name = flake.config.people.myself;
@@ -26,9 +43,6 @@ in
 
   services.getty.autologinUser = flake.config.people.myself;
   security.sudo.wheelNeedsPassword = false;
-
-  # Make VM output to the terminal instead of a separate window
-  virtualisation.vmVariant.virtualisation.graphics = false;
 
   system.stateVersion = "23.11";
 }

@@ -32,6 +32,7 @@
     # $ nix shell nixpkgs#mas
     # $ mas search <app name>
     masApps = {
+      "adguard" = 1440147259;
       "bitwarden" = 1352778147;
     };
   };

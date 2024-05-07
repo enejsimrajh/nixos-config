@@ -8,7 +8,7 @@
           family = "IosevkaTerm Nerd Font";
           style = "Regular";
         };
-        size = 14;
+        size = 16;
       };
     };
   };
