@@ -1,6 +1,6 @@
-  # Configuration common to all Linux systems
+# Configuration common to all Linux systems
 
-{ self, config, ... }:
+{ self, inputs, config, ... }:
 {
   flake = {
     nixosModules = {
@@ -23,6 +23,7 @@
         self.nixosModules.home-manager
         self.nixosModules.my-home
         self.nixosModules.common
+        inputs.agenix.nixosModules.default
       ];
     };
   };

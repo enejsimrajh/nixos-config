@@ -1,7 +1,7 @@
 # System-level substituers & trusted-public-keys
 
 {
-  nix.settings =  {
+  nix.settings = {
     substituters = [
       "https://hyprland.cachix.org"
       "https://nix-community.cachix.org"

@@ -23,6 +23,7 @@
     casks = [
       "discord"
       "firefox"
+      "openvpn-connect"
       "spotify"
       "sublime-merge"
       "swish"

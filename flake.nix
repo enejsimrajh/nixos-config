@@ -19,9 +19,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-flake.url = "github:srid/nixos-flake";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-
-    nuenv.url = "github:DeterminateSystems/nuenv";
-    nixd.url = "github:nix-community/nixd";
+    agenix.url = "github:ryantm/agenix";
 
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -63,7 +61,7 @@
           "brahma" = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
             imports = [
-              ./systems/desktop.nix
+              ./systems/nixos/desktop.nix
             ];
           };
 
@@ -109,7 +107,7 @@
         packages.aarch64-darwin.darwin-vm = self.nixosConfigurations.maya.config.system.build.vm;
       };
 
-      perSystem = { self', system, pkgs, lib, config, inputs', ... }: {
+      perSystem = { self', inputs', pkgs, system, config, ... }: {
         nixos-flake.primary-inputs = [ "nixpkgs" "home-manager" "nix-darwin" "nixos-flake" ];
 
         treefmt.config = {
@@ -120,14 +118,11 @@
         packages.default = self'.packages.activate;
 
         devShells.default = pkgs.mkShell {
-          buildInputs = [
-            pkgs.nixpkgs-fmt
-            pkgs.sops
-            pkgs.ssh-to-age
+          inputsFrom = [ config.treefmt.build.devShell ];
+          packages = with pkgs; [
+            inputs'.agenix.packages.default
           ];
         };
-
-        formatter = config.treefmt.build.wrapper;
       };
     };
 }

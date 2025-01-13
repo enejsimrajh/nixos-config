@@ -1,0 +1,5 @@
+[manager]
+ratio = [0, 4, 0]
+
+[opener]
+edit = [{ run = 'ide-open-file $1', desc = "Open File in a new pane" }]

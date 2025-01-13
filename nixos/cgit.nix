@@ -1,8 +1,9 @@
 { pkgs, config, lib, ... }:
 let
   fqdn = config.networking.hostName + lib.optionalString (config.networking.domain != null) ".${config.networking.domain}";
-in {
-  services.cgit."git.${fqdn}" = {
+in
+{
+  services.cgit."localhost" = {
     enable = true;
     nginx.location = "/cgit/";
     scanPath = "/var/lib/git";

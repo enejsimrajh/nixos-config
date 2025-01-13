@@ -9,7 +9,6 @@ in
     self.nixosModules.default
     "${self}/nixos/acme.nix"
     "${self}/nixos/nginx.nix"
-    "${self}/nixos/sourcehut.nix"
   ];
 
   networking = {
@@ -18,5 +17,5 @@ in
     firewall.allowedTCPPorts = [ 22 80 443 ];
   };
 
-    system.stateVersion = "23.11";
+  system.stateVersion = "23.11";
 }

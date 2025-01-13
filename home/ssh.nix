@@ -1,5 +1,5 @@
 {
-  programs.hyprland = {
+  programs.ssh = {
     enable = true;
   };
 }

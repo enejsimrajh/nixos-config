@@ -4,12 +4,12 @@
     enable = true;
     package = if pkgs.stdenv.isDarwin then null else pkgs.firefox-bin;
     profiles.${flake.config.people.users.${config.home.username}.name} = {
-      bookmarks = {};
+      bookmarks = { };
       extensions = with flake.inputs.firefox-addons.packages.${pkgs.system}; [
         bitwarden
         ublock-origin
       ];
-      bookmarks = {};
+      bookmarks = { };
       settings = {
         "browser.disableResetPrompt" = true;
         "browser.download.panel.shown" = true;

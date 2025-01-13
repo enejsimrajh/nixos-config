@@ -10,6 +10,9 @@
         };
         size = 16;
       };
+      window = {
+       option_as_alt = "OnlyLeft";
+      };
     };
   };
 }
