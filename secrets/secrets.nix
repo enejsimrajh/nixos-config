@@ -1,8 +1,8 @@
 let
-  config = import ../users/config.nix;
-  myself = config.users.enejsimrajh.sshKey;
+  config = import ../config.nix;
+  users = config.users;
 in
 {
-  "platform/openvpn-private.key.age".publicKeys = [ myself ];
-  "platform/openvpn-static.key.age".publicKeys = [ myself ];
+  "platform/openvpn-private.key.age".publicKeys = [ users.enej.sshKey ];
+  "platform/openvpn-static.key.age".publicKeys = [ users.enej.sshKey ];
 }
