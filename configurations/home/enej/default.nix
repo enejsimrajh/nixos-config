@@ -1,11 +1,12 @@
-{ flake, pkgs, lib, system, ... }:
+{ flake, pkgs, lib, ... }:
 let
-  inherit (flake.inputs) self;
+  inherit (flake) inputs;
   user = flake.config.users.enej;
 in
 {
   imports = [
-    # ./openvpn
+    inputs.agenix.homeManagerModules.default
+    ./openvpn
     ./zellij
     ./alacritty.nix
     ./firefox.nix
@@ -43,14 +44,12 @@ in
   };
 
   fonts = {
+    fontconfig.enable = true;
     fontlibrary = {
       nerdfonts = [
         "Iosevka"
         "IosevkaTerm"
       ];
-    };
-    fontconfig = {
-      enable = true;
     };
   };
 }
