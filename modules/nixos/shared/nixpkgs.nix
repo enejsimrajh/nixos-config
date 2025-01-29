@@ -12,4 +12,4 @@ in
     };
     overlays = lib.attrValues self.overlays;
   };
-};
+}

@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 let
   cfg = config.fonts.fontlibrary;
 in
@@ -6,24 +6,23 @@ in
   options.fonts.fontlibrary = {
     packages = lib.mkOption {
       type = lib.types.listOf lib.types.package;
-      default = null;
+      default = [ ];
       example = "[ pkgs.fira-code ]";
     };
     nerdfonts = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = null;
+      default = [ ];
       example = "[ \"Iosevka\" \"IosevkaTerm\" ]";
     };
   };
 
-  config = lib.mkMerge [
-    (lib.mkIf (cfg.packages != null) {
-      home.packages = cfg.packages
-    })
-    (lib.mkIf (cfg.nerdfonts != null) {
-      home.packages = pkgs.nerdfonts.override {
-        fonts = nerdfonts;
-      }
-    })
-  ];
+  config = {
+    home.packages = [
+      (
+        pkgs.nerdfonts.override {
+          fonts = cfg.nerdfonts;
+        }
+      )
+    ] ++ cfg.packages;
+  };
 }

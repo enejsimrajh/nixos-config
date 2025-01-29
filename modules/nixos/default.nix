@@ -12,8 +12,9 @@ in
         self.homeModules.linux
       ];
     }
-    self.nixosModules.shared.default
-    self.nixosModules.linux.default
+    self.homeModules.toplevel
+    self.nixosModules.shared
+    self.nixosModules.linux
     inputs.agenix.nixosModules.default
   ];
 

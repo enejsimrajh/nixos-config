@@ -7,8 +7,6 @@ in
 {
   imports = [
     self.nixosModules.default
-    "${self}/nixos/acme.nix"
-    "${self}/nixos/nginx.nix"
   ];
 
   networking = {
@@ -16,6 +14,8 @@ in
     domain = "lan";
     firewall.allowedTCPPorts = [ 22 80 443 ];
   };
+
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   system.stateVersion = "23.11";
 }

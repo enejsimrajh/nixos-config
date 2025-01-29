@@ -1,32 +1,32 @@
 # Configuration for Enej's Macbook
-{ flake, pkgs, lib, system, ... }:
+{ flake, pkgs, lib, ... }:
 let
   inherit (flake.inputs) self;
   inherit (flake.config) users;
-  inherit (lib) filter filesystem.listFilesRecursive;
+  inherit (lib) filter filesystem hasSuffix;
+  inherit (filesystem) listFilesRecursive;
 
-  let importDir = dir: filter
-    (filename: filename != "default.nix")
+  importDir = dir: filter
+    (filename: hasSuffix ".nix" filename && !(hasSuffix "default.nix" filename))
     (listFilesRecursive dir);
 in
 {
   imports = [
     self.darwinModules.default
-    ( importDir ./. )
-  ];
+  ] ++ importDir ./.;
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   networking.hostName = "shiva";
 
   users.users = {
-    ${users.enej.name}.home = "/Users/${users.enej.username}";
+    ${users.enej.username}.home = "/Users/${users.enej.username}";
   };
 
   # Enable home-manager for users
   home-manager.users = {
-    ${users.enej.name}.imports = [
-      legacyPackages.${system}.homeConfigurations.${users.enej.name}.default
+    ${users.enej.username}.imports = [
+      (self + /configurations/home/${users.enej.username})
     ];
   };
 

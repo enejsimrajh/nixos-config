@@ -5,7 +5,7 @@ let
 in
 {
   imports = [
-    ./openvpn
+    # ./openvpn
     ./zellij
     ./alacritty.nix
     ./firefox.nix
@@ -23,7 +23,7 @@ in
     firefox.enable = true;
     helix = {
       enable = true;
-      extraPackages = pkgs.marksman;
+      extraPackages = [ pkgs.marksman ];
     };
     ripgrep.enable = true;
     starship.enable = true;

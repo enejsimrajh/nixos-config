@@ -1,11 +1,12 @@
 { lib, ... }:
 let
-  inherit (lib) filter filesystem.listFilesRecursive;
+  inherit (lib) filter filesystem hasSuffix;
+  inherit (filesystem) listFilesRecursive;
 
-  let importDir = dir: filter
-    (filename: filename != "default.nix")
+  importDir = dir: filter
+    (filename: hasSuffix ".nix" filename && !(hasSuffix "default.nix" filename))
     (listFilesRecursive dir);
 in
 {
-  imports = importDir ./.
+  imports = importDir ./.;
 }

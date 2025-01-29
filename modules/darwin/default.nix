@@ -12,7 +12,8 @@ in
         self.homeModules.darwin
       ];
     }
-    self.nixosModules.shared.default
+    self.homeModules.toplevel
+    self.nixosModules.shared
     inputs.agenix.darwinModules.default
     ./homebrew.nix
   ];

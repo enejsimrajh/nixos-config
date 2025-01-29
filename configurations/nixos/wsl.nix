@@ -17,6 +17,8 @@ in
     defaultUser = flake.config.people.myself;
   };
 
+  nixpkgs.hostPlatform = "x86_64-linux";
+
   networking.hostName = "yama";
 
   system.stateVersion = "23.11";

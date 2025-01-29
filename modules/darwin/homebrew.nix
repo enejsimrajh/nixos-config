@@ -1,7 +1,7 @@
-{ flake, lib, ... }:
+{ flake, lib, config, ... }:
 let
   inherit (flake) inputs;
-  user = "_homebrew"
+  serviceUser = "_nix-homebrew";
 in
 {
   imports = [
@@ -9,14 +9,19 @@ in
   ];
 
   users = lib.mkIf config.homebrew.enable {
-    users.${user} = {};
-    groups.wheel.members = [ user ];
+    users.${serviceUser} = {
+      createHome = false;
+      description = "Homebrew service user";
+      uid = lib.mkDefault 499;
+    };
+    knownUsers = [ serviceUser ];
+    groups.wheel.members = [ serviceUser ];
   };
 
   # Enable Homebrew
-  nix-homebrew = {
-    enable = config.homebrew.enable;
-    user = user;
+  nix-homebrew = lib.mkIf config.homebrew.enable {
+    enable = true;
+    user = serviceUser;
     # Enable fully-declarative tap management
     mutableTaps = false;
   };

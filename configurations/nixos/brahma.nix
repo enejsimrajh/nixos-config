@@ -7,8 +7,11 @@ in
 {
   imports = [
     self.nixosModules.default
-    "${self}/nixos/hyprland.nix"
   ];
+
+  nixpkgs.hostPlatform = "x86_64-linux";
+
+  networking.hostName = "brahma";
 
   system.stateVersion = "23.11";
 }
