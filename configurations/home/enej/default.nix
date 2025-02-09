@@ -6,10 +6,12 @@ in
 {
   imports = [
     inputs.agenix.homeManagerModules.default
+    ./darwin
     ./openvpn
     ./zellij
     ./alacritty.nix
     ./firefox.nix
+    ./fonts.nix
   ];
 
   home = {
@@ -40,16 +42,6 @@ in
       enable = true;
       userName = user.fullname;
       userEmail = user.email;
-    };
-  };
-
-  fonts = {
-    fontconfig.enable = true;
-    fontlibrary = {
-      nerdfonts = [
-        "Iosevka"
-        "IosevkaTerm"
-      ];
     };
   };
 }
